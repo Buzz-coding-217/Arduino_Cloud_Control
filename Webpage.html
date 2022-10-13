@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang=”en”>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Traffic Control</title>
+</head>
+
+<body>
+  <!-- javascript -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.8.1/firebase-database.js"></script>
+
+  <script>
+    // Firebase configuration of database
+    const firebaseConfig = {
+      apiKey: "AIzaSyApAEaz-d5YiTBeJvMFW9g01C7IdyICazE",
+      authDomain: "traffic-light-1dbeb.firebaseapp.com",
+      databaseURL: "https://traffic-light-1dbeb-default-rtdb.firebaseio.com",
+      projectId: "traffic-light-1dbeb",
+      storageBucket: "traffic-light-1dbeb.appspot.com",
+      messagingSenderId: "308590934749",
+      appId: "1:308590934749:web:0df445585729dee0f0f934",
+      measurementId: "G-01CL3JR5HF"
+    };
+
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    // Different functions will change the value on the database
+    function Red() {
+      firebase.database().ref("/light").set({
+        light: "Red"
+      })
+    }
+
+    function Yellow() {
+      firebase.database().ref("/light").set({
+        light: "Yellow"
+      })
+    }
+    function Green() {
+      firebase.database().ref("/light").set({
+        light: "Green"
+      })
+    }
+
+  </script>
+  <!-- CSS -->
+  <style>
+    
+    body {
+      background-image: url("background2.jpg");
+    }
+
+    #Y {
+      color: aliceblue;
+      margin-left: 400px;
+      margin-top: 210px;
+    }
+
+    .button {
+
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 36px;
+      margin: 4px 2px;
+      cursor: pointer;
+    }
+
+    #Red {
+      background-color: red;
+      color: black;
+      position: absolute;
+      margin-left: 20%;
+      margin-top: 320px;
+      font-style:italic;
+    }
+
+    #Yellow {
+      background-color: yellow;
+      color: black;
+      position: absolute;
+      margin-left: 37%;
+      margin-top: 320px;
+      font-style:italic;
+    }
+
+    #Green {
+      background-color: #4CAF50;
+      color: black;
+      position: absolute;
+      margin-left: 59%;
+      margin-top: 320px;
+      font-style:italic;
+    }
+  </style>
+  <!-- Calling different function when being pressed -->
+  <button class="button" id="Red" onclick="Red()">RED</button>
+  <button class="button" id="Yellow" onclick="Yellow()">YELLOW</button>
+  <button class="button" id="Green" onclick="Green()">GREEN</button>
+</body>
